@@ -1,10 +1,10 @@
-chrome_driver_path = "C:\Development\chromedriver.exe"
-
 
 -----------OPTION 1-------------------------
-1) Install Selenium  => pip install selenium
-2) Install Webdriver Manager for Python => pip install webdriver-manager
-3) Run code below
+1) Download Selenium Chrome driver => https://chromedriver.chromium.org/downloads. Install driver based on Chrome version.
+2) Copy path to chromedriver  => "C:\Development\chromedriver.exe"
+3) Install Selenium  => pip install selenium
+4) Install Webdriver Manager for Python => pip install webdriver-manager
+5) Run code below
         from selenium import webdriver
         from selenium.webdriver.chrome.service import Service
         from webdriver_manager.chrome import ChromeDriverManager        
@@ -14,11 +14,20 @@ chrome_driver_path = "C:\Development\chromedriver.exe"
 
 
 -----------OPTION 2-------------------------
-1) Install Selenium  - pip install selenium
-2) Run code below
+1) Download Selenium Chrome driver => https://chromedriver.chromium.org/downloads. Install driver based on Chrome version.
+2) Copy path to chromedriver  => "C:\Development\chromedriver.exe"
+3) Install Selenium  - pip install selenium
+4) Run code below
         from selenium import webdriver
         from selenium.webdriver.chrome.service import Service
         ser = Service(r"C:\Development\\chromedriver.exe")
-        op = webdriver.ChromeOptions()
 
-        driver = webdriver.Chrome(service=ser, options=op)
+        options = webdriver.ChromeOptions()
+        options.add_argument("disable-infobars")
+        options.add_argument("start-maximized")
+        options.add_argument("disable-dev-shm-usage")
+        options.add_argument("no-sandbox")
+        options.add_experimental_option("excludeSwitches", ["enable-automation"])
+        options.add_argument("disable-blink-features=AutomationControlled")
+
+        driver = webdriver.Chrome(service=ser, options=options)
