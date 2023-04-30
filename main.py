@@ -13,6 +13,9 @@ def get_driver():
     options.add_argument("disable-dev-shm-usage")
     options.add_argument("no-sandbox")
     options.add_experimental_option("excludeSwitches", ["enable-automation"])
+    options.add_experimental_option(
+        "excludeSwitches", ["enable-logging"])   # Remove error message from adding below option"
+    options.add_experimental_option("detach", True)   # Keep browswer open
     options.add_argument("disable-blink-features=AutomationControlled")
 
     driver = webdriver.Chrome(service=service, options=options)
