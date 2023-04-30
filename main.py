@@ -3,9 +3,10 @@ from selenium.webdriver.chrome.service import Service
 # from webdriver_manager.chrome import ChromeDriverManager
 
 
-def get_driver():
-    ser = Service(r"C:\Development\\chromedriver.exe")
+service = Service(r"C:\Development\\chromedriver.exe")
 
+
+def get_driver():
     options = webdriver.ChromeOptions()
     options.add_argument("disable-infobars")
     options.add_argument("start-maximized")
@@ -14,7 +15,7 @@ def get_driver():
     options.add_experimental_option("excludeSwitches", ["enable-automation"])
     options.add_argument("disable-blink-features=AutomationControlled")
 
-    driver = webdriver.Chrome(service=ser, options=options)
+    driver = webdriver.Chrome(service=service, options=options)
 
     driver.get("http://automated.pythonanywhere.com/")
     return driver
